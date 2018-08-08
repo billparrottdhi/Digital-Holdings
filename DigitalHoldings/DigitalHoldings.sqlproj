@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Name>DigitalHoldings</Name>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>4.1</ProjectVersion>
+    <ProjectGuid>{681d9e17-9e5e-4e2b-b25a-40dedf922ed3}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.SqlAzureV12DatabaseSchemaProvider</DSP>
+    <OutputType>Database</OutputType>
+    <RootPath>
+    </RootPath>
+    <RootNamespace>DigitalHoldings</RootNamespace>
+    <AssemblyName>DigitalHoldings</AssemblyName>
+    <ModelCollation>1033, CI</ModelCollation>
+    <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
+    <DeployToDatabase>True</DeployToDatabase>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetLanguage>CS</TargetLanguage>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <SqlServerVerification>False</SqlServerVerification>
+    <IncludeCompositeObjects>True</IncludeCompositeObjects>
+    <TargetDatabaseSet>True</TargetDatabaseSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
+    <!-- Default to the v11.0 targets path if the targets file for the current VS version is not found -->
+    <SSDTExists Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets')">True</SSDTExists>
+    <VisualStudioVersion Condition="'$(SSDTExists)' == ''">11.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Condition="'$(SQLDBExtensionsRefPath)' != ''" Project="$(SQLDBExtensionsRefPath)\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <ItemGroup>
+    <Folder Include="Properties" />
+    <Folder Include="Schemas" />
+    <Folder Include="Schemas\dh" />
+    <Folder Include="Schemas\lookup" />
+    <Folder Include="Schemas\import" />
+    <Folder Include="Schemas\import\Tables" />
+    <Folder Include="Schemas\import\Views" />
+    <Folder Include="Schemas\import\Stored Procedures" />
+    <Folder Include="Schemas\dh\Tables" />
+    <Folder Include="Schemas\lookup\Tables" />
+    <Folder Include="Schemas\dh\Views" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="Schemas\dh.sql" />
+    <Build Include="Schemas\lookup.sql" />
+    <Build Include="Schemas\import.sql" />
+    <Build Include="Schemas\import\Tables\domain.sql" />
+    <Build Include="Schemas\import\Views\ListAllNameServers.sql" />
+    <Build Include="Schemas\import\Views\ListNewNameServers.sql" />
+    <Build Include="Schemas\import\Views\ListExistingDomains.sql" />
+    <Build Include="Schemas\import\Stored Procedures\refreshDomainNameservers.sql" />
+    <Build Include="Schemas\import\Stored Procedures\scrubDomainRecords.sql" />
+    <Build Include="Schemas\import\Tables\domain_nameserver.sql" />
+    <Build Include="Schemas\import\Tables\nameserver.sql" />
+    <Build Include="Schemas\dh\Tables\contact.sql" />
+    <Build Include="Schemas\dh\Tables\domain.sql" />
+    <Build Include="Schemas\dh\Tables\domain_contact.sql" />
+    <Build Include="Schemas\dh\Tables\domain_nameserver.sql" />
+    <Build Include="Schemas\dh\Tables\entity.sql" />
+    <Build Include="Schemas\dh\Tables\entity_naics.sql" />
+    <Build Include="Schemas\dh\Tables\entity_vertical.sql" />
+    <Build Include="Schemas\dh\Tables\nameserver.sql" />
+    <Build Include="Schemas\dh\Tables\registrar.sql" />
+    <Build Include="Schemas\dh\Tables\tld.sql" />
+    <Build Include="Schemas\dh\Tables\email.sql" />
+    <Build Include="Schemas\lookup\Tables\domain_contact_type.sql" />
+    <Build Include="Schemas\lookup\Tables\naics.sql" />
+    <Build Include="Schemas\lookup\Tables\vc_vertical.sql" />
+    <Build Include="Schemas\import\Views\ListNewContacts.sql" />
+    <Build Include="Schemas\import\Views\ListNewEmailAddresses.sql" />
+    <Build Include="Schemas\import\Stored Procedures\updateContacts.sql" />
+    <Build Include="Schemas\import\Stored Procedures\updateEmails.sql" />
+    <Build Include="Schemas\import\Views\ListNameServerUpdates.sql" />
+    <Build Include="Schemas\import\Stored Procedures\updateNamerservers.sql" />
+    <Build Include="Schemas\import\Views\ListDomains.sql" />
+    <Build Include="Schemas\import\Stored Procedures\updateDomain.sql" />
+    <Build Include="Schemas\lookup\Tables\entity_funding_stage.sql" />
+    <Build Include="Schemas\dh\Views\00-EntityInitialsNameDomainSegmentedbyVCverticals.sql" />
+    <Build Include="Schemas\dh\Tables\company.sql" />
+    <Build Include="Schemas\import\Stored Procedures\getCompanyInfo.sql" />
+    <Build Include="Schemas\import\Views\ListNameserversandContacts.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="local.DigitalHoldings.publish.publish.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <RefactorLog Include="DigitalHoldings.refactorlog" />
+  </ItemGroup>
+  <ItemGroup>
+    <PreDeploy Include="Script.PreDeployment.sql" />
+  </ItemGroup>
+</Project>
